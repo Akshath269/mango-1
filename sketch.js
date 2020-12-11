@@ -1,4 +1,3 @@
-
 const Engine = Matter.Engine;
 const World = Matter.World;
 const Bodies = Matter.Bodies;
@@ -25,19 +24,20 @@ function setup() {
 	treeObj=new tree(1050,580);
 	stoneObj=new stone(240,430,30)
 	groundObject=new ground(width/2,600,width,20);
-	chain = new Chain(stoneObj.body,{x:200,y:430});
+  chain = new Chain(stoneObj.body,{x:200,y:430});
+ 
+
+
+
 	Engine.run(engine);
-  detectCollison(stoneObj,mango1)
-  detectCollison(stoneObj,mango2)
-  detectCollison(stoneObj,mango3)
-  detectCollison(stoneObj,mango4)
+  
 }
 
 function draw() {
 
   background(230);
   //Add code for displaying text here!
-  image(boy ,200,340,200,300);
+  image(boy ,170,340,200,300);
   
 
   treeObj.display();
@@ -48,7 +48,11 @@ function draw() {
   stoneObj.display();
   groundObject.display();
   chain.display();
- // detectCollison()
+  detectCollison(stoneObj,mango1)
+  detectCollison(stoneObj,mango2)
+  detectCollison(stoneObj,mango3)
+  detectCollison(stoneObj,mango4)
+  
   //keyPressed()
 
 }
@@ -71,69 +75,26 @@ function detectCollison(stoneObj,mango){
 mangoBodyPosition=mango.body.position
 stoneObjBodyPosition=stoneObj.body.position
 
-var distance=dist(stoneObjBodyPosition.x,stoneObjBodyPosition.y,mangoBodyPosition.x,mangoBodyPosition.y)
-if(distance<=mango.r+stoneObj.r){
-
-Matter.body.setStatic(mango.body,false)
-
+var distance=dist(mangoBodyPosition.x,mangoBodyPosition.y,stoneObjBodyPosition.x,stoneObjBodyPosition.y)
+console.log("distance="+distance)
+if(distance<=60){
 
 
-
-
-
+Matter.Body.setStatic(mango.body,false);
 
 }
-
+}
 
 
 function keyPressed(){
 if(keyCode === 32){
 
-Matter.Body.setPosition(stoneObj.body,{x:235,y:420})
-chain.attach(stoneObj.body)
+  Matter.Body.setPosition(stoneObj.body,{x:200,y:430})
+  chain.attach(stoneObj.body)
 
 
-
-
-
-
-}
-
-
-
-
+  }
 
 
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-}

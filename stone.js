@@ -16,18 +16,6 @@ this.image=loadImage("images/stone.png")
 this.body=Bodies.circle(this.x,this.y,this.r,option)
      World.add(world,this.body)
 
-
-
-
-
-
-
-
-
-
-
-
-
 }
 display(){
 var stonepos=this.body.position
@@ -38,27 +26,7 @@ var stonepos=this.body.position
    ellipseMode(CENTER)
    image(this.image,0,0,this.r*2,this.r*2)
    pop()
-
-
-
-
-
-
-
-
-
-}
-
-
-
-
-
-
-
-
-
-
-
+ }
 
 
 }
